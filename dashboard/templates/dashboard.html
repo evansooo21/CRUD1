@@ -1,0 +1,9 @@
+{%extends 'base.html'%}
+{%block title%}Dashboard{%endblock%}
+{%block content%}<br/><div class="container">
+<h1>Dashboard</h1><hr>
+    {%if user.is_authenticated%}
+    <p>Hi, {{user.get_username}}, Welcome to your dashboard. You can <a href="{%url 'edit'%}">edit your profile</a> or <a href="{%url 'password_reset'%}"> change your password</a></p>{%else%}
+    <p>You have been successfully logged out you can<a href="{%url 'login'%}">Log-in again</a></p>{%endif%}
+</div>
+{%endblock%}

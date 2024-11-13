@@ -1,0 +1,34 @@
+{%extends 'base.html'%}
+{%block content%}
+
+<div class="container">
+     {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ field.label }}</strong><span>{{ error|escape }}</span></strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+    <h1>Edit your account</h1>
+    <p>you can edit your account using the following form:</p>
+    <form action="." method="post" class="form-group" enctype="multipart/form-data">
+       <p><label class="form-label" for="id_first_name">First name:</label> <input class="form-control" type="text" name="first_name" maxlength="150" id="id_first_name"></p>
+<p><label for="id_last_name" class="form-label">Last name:</label> <input class="form-control" type="text" name="last_name" maxlength="150" id="id_last_name"></p>
+<p><label class="form-label" for="id_email">Email address:</label> <input type="email" name="email" class="form-control" value="datonayomide@gmail.com" maxlength="254" id="id_email"></p>
+        <p><label for="id_date_of_birth"class="form-label">Date of birth:</label> <input type="text"class="form-control" name="date_of_birth" value="2006-07-01" id="id_date_of_birth"></p>
+<p><label for="id_photos" class="form-label">Photos:</label> Currently: <a href="/media/Users/ayo.png">Users/ayo.png</a>
+<input type="checkbox"  name="photos-clear" id="photos-clear_id">
+<label class="form-label"for="photos-clear_id">Clear</label><br>
+Change:
+<input type="file" name="photos" class="form-control" accept="image/*" id="id_photos"></p>   <p><input class="btn btn-success" type="submit" value="Save changes"></p>
+   {%csrf_token%}
+    </form>
+</div>
+{%endblock%}

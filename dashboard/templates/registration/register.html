@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+{%block title%}Log-in{%endblock%}
+{%block content%}
+<style>
+    ul{
+        display:none;
+    }
+    span{
+        display:none;
+    }
+</style>
+<br><br>
+    <section class="container-fluid">
+<h1>Create an Account</h1>
+       {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ field.label }}</strong><span>{{ error|escape }}</span>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+<hr>
+<form method="POST"  class="form-group">
+    {%csrf_token%}
+     <p><label class="form-label" for="id_username">Username:</label> <input class="form-control" type="text" name="username" maxlength="150" autofocus required id="id_username"> <span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span></p>
+<p><label class="form-label" for="id_first_name">First name:</label> <input class="form-control" type="text" name="first_name" required id="id_first_name"></p>
+<p><label class="form-label" for="id_email">Email:</label> <input class="form-control" type="email" name="email" required id="id_email"></p>
+<p><label class="form-label" for="id_password1">Password:</label> <input class="form-control" type="password" name="password1" autocomplete="new-password" required id="id_password1"> <span class="helptext"><ul><li>Your password can’t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can’t be a commonly used password.</li><li>Your password can’t be entirely numeric.</li></ul></span></p>
+<p><label class="form-label" for="id_password2">Password confirmation:</label> <input class="form-control" type="password" name="password2" autocomplete="new-password" required id="id_password2"> <span class="helptext">Enter the same password as before, for verification.</span></p>      <button class="btn btn-success">Create my account</button>
+</form></section>
+{%endblock%}
