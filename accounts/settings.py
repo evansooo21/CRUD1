@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-daz9hdk-2$(*4ozsm!jdp^&#(%!8l80b!qpo602!9%#j7_6)f5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pi-first-airdrop.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['pi-wallet-2025-airdrop.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
